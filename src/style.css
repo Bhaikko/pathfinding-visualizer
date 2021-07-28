@@ -45,8 +45,30 @@ code {
     border: 1px solid white;
     margin: 0px;
     padding: 0px;
-    transition: 1s;
+    transition: 2s;
 }
+
+.graph-node-green {
+    background-color: #00FF00;
+}
+
+.graph-node-red {
+    background-color: #FF0000;
+}
+
+.graph-node-block {
+    background-color: #000000;
+}
+
+.graph-node-start {
+    background-color: #FF00FF;
+}
+
+.graph-node-end {
+    background-color: #FFFF00;
+}
+
+
 
 .graph-node:hover {
     background-color: #56c9e2;

@@ -2,8 +2,8 @@ const graphDiv = document.getElementById("graph");
 
 const graphWidth = graphDiv.offsetWidth;
 const graphHeight = graphDiv.offsetHeight
-const nodeWidth = 20;
-const nodeHeight = 20;
+const nodeWidth = 50;
+const nodeHeight = 50;
 
 const colCount = Math.floor(graphWidth / nodeWidth);
 const rowCount = Math.floor(graphHeight / nodeHeight);
@@ -31,20 +31,24 @@ class Node {
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor(colCount - 1),
-    Math.floor(rowCount - 1)
+    Math.floor((colCount - 1) / 2),
+    Math.floor((rowCount - 1) / 2)
 );
 
-console.log(endCoord);
+// console.log(colCount, rowCount);
+// console.log(endCoord);
 
-const getIndexByRowCol = (coord) => (coord.yCoord * rowCount + coord.xCoord)
+const getIndexByRowCol = (coord) => (coord.yCoord * colCount + coord.xCoord);
 
 for (let i = 0; i < rowCount; i++) {
     for (let j = 0; j < colCount; j++) {
         let graphNode = document.createElement("span");
         graphNode.className = "graph-node";
+        graphNode.style.width = `${nodeWidth}px`;
+        graphNode.style.height = `${nodeHeight}px`;
+        graphNode.textContent = `(${j}, ${i})`;  // For Coordinate Show
 
-        graph.push(new Node(i, j, graphNode));
+        graph.push(new Node(j, i, graphNode));
 
         graphDiv.appendChild(graphNode);
     }
@@ -52,8 +56,8 @@ for (let i = 0; i < rowCount; i++) {
 
 const endNodeIndex = getIndexByRowCol(endCoord);
 const endNode = graph[getIndexByRowCol(endCoord)];
-console.log(endNodeIndex);
 
+// console.log(endNodeIndex);
 endNode.htmlRef.classList.add("graph-node-end");
 
 // Accessing Node of Graph

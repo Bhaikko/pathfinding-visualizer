@@ -21,9 +21,11 @@ class Node {
     constructor(xCoord, yCoord, htmlRef) {
         this.coordinates = new Coordinate(xCoord, yCoord)
         this.htmlRef = htmlRef;
+        this.isVisited = false;
         this.isStart = false;
         this.isEnd = false;
         this.isBlocked = false;
+        this.parent = null;
     }
 }
 

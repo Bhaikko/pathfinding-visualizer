@@ -11,15 +11,15 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 // const rowCount = 4;
 
 class Coordinate {
-    constructor(xCoord, yCoord) {
-        this.xCoord = xCoord;
-        this.yCoord = yCoord;
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
     }
 }
 
 class Node {
-    constructor(xCoord, yCoord, htmlRef) {
-        this.coordinates = new Coordinate(xCoord, yCoord)
+    constructor(x, y, htmlRef) {
+        this.coordinates = new Coordinate(x, y)
         this.htmlRef = htmlRef;
         this.isVisited = false;
         this.isStart = false;
@@ -37,10 +37,12 @@ const endCoord = new Coordinate(
     Math.floor((rowCount - 1) / 2)
 );
 
+const startCoord = new Coordinate(2, 3);
+
 // console.log(colCount, rowCount);
 // console.log(endCoord);
 
-const getIndexByRowCol = (coord) => (coord.yCoord * colCount + coord.xCoord);
+const getIndexByRowCol = (coord) => (coord.y * colCount + coord.x);
 
 for (let i = 0; i < rowCount; i++) {
     for (let j = 0; j < colCount; j++) {
@@ -56,22 +58,24 @@ for (let i = 0; i < rowCount; i++) {
     }
 }
 
-const endNodeIndex = getIndexByRowCol(endCoord);
+
+const startNode = graph[getIndexByRowCol(startCoord)];
 const endNode = graph[getIndexByRowCol(endCoord)];
 
-// console.log(endNodeIndex);
+
+startNode.htmlRef.classList.add("graph-node-start");
 endNode.htmlRef.classList.add("graph-node-end");
 
 // Accessing Node of Graph
 // graph[getIndexByRowCol(0, 0)].htmlRef.setAttribute("class", "hello");
 
-
+// Need Fix
 const paintPath = pathCoords => {
     graph.map(node => {
         pathCoords.map(coord => {
             if (
-                node.xCoord == coord[0] && 
-                node.yCoord == coord[1]
+                node.x == coord[0] && 
+                node.y == coord[1]
             ) {
                 node.htmlRef.classList.add("graph-node-green");
             }

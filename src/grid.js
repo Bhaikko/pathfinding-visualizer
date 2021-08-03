@@ -5,39 +5,19 @@ const graphHeight = graphDiv.offsetHeight
 const nodeWidth = 50;
 const nodeHeight = 50;
 
-const colCount = Math.floor(graphWidth / nodeWidth);
-const rowCount = Math.floor(graphHeight / nodeHeight);
-// const colCount = 4;
-// const rowCount = 4;
-
-class Coordinate {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
-class Node {
-    constructor(x, y, htmlRef) {
-        this.coordinates = new Coordinate(x, y)
-        this.htmlRef = htmlRef;
-        this.isVisited = false;
-        this.isStart = false;
-        this.isEnd = false;
-        this.isBlocked = false;
-        this.parent = null;
-    }
-}
-
+// const colCount = Math.floor(graphWidth / nodeWidth);
+// const rowCount = Math.floor(graphHeight / nodeHeight);
+const colCount = 4;
+const rowCount = 4;
 
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor((colCount - 1) / 2),
-    Math.floor((rowCount - 1) / 2)
+    Math.floor((colCount - 1)) - 1,
+    Math.floor((rowCount - 1))
 );
 
-const startCoord = new Coordinate(2, 3);
+const startCoord = new Coordinate(1, 1);
 
 // console.log(colCount, rowCount);
 // console.log(endCoord);
@@ -57,7 +37,6 @@ for (let i = 0; i < rowCount; i++) {
         graphDiv.appendChild(graphNode);
     }
 }
-
 
 const startNode = graph[getIndexByRowCol(startCoord)];
 const endNode = graph[getIndexByRowCol(endCoord)];

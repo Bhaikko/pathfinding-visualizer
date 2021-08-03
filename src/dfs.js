@@ -1,57 +1,92 @@
 // Returns Path Array
-const FillStack = endNode => {
-    const pathStack = new Stack();
+const GetPathStack = (endNode, pathStack) => {
     
     let currentNode = endNode;
+    
     while (currentNode != null) {
         pathStack.Push(currentNode);
         currentNode = currentNode.parent;
     }
-
-    return pathStack;
 }
 
-const DFS = (currentNode, endNode) => {
+let pathFound = false;
+
+const DFS = (currentNode, endNode, pathStack) => {
     if (
-        currentNode.x === endNode.x &&
-        currentNode.y === endNode.y
+        currentNode.coordinates.x === endNode.coordinates.x &&
+        currentNode.coordinates.y === endNode.coordinates.y
     ) {
         // Path Found
-        return FillStack();
-    }
-
-    if (currentNode.isVisited) {
+        pathFound = true;
+        GetPathStack(endNode, pathStack);
         return;
     }
 
-    console.log("Ins")
-
+    if (currentNode.isVisited || pathFound) {
+        return;
+    }
+    
     currentNode.isVisited = true;
 
-    if (currentNode.coordinates.x + 1 < graphWidth) {
-        DFS(graph[getIndexByRowCol(
-            new Coordinate(currentNode.coordinates.x + 1, currentNode.coordinates.y)
-        )], endNode, pathStack);
+    if (currentNode.coordinates.x + 1 < colCount) {
+        let neighborIndex = getIndexByRowCol(new Coordinate(
+            currentNode.coordinates.x + 1, 
+            currentNode.coordinates.y
+        ));
+
+        let neighborNode = graph[neighborIndex];
+
+        if (!neighborNode.isVisited) {
+            neighborNode.parent = currentNode;
+    
+            DFS(neighborNode, endNode, pathStack);
+        }
+
     }
 
+    if (currentNode.coordinates.y + 1 < rowCount) {
+        let neighborIndex = getIndexByRowCol(new Coordinate(
+            currentNode.coordinates.x, 
+            currentNode.coordinates.y + 1
+        ));
+
+        let neighborNode = graph[neighborIndex];
+        
+        if (!neighborNode.isVisited) {
+            neighborNode.parent = currentNode;
     
-    if (currentNode.coordinates.y + 1 < graphHeight) {
-        DFS(graph[getIndexByRowCol(
-            new Coordinate(currentNode.coordinates.x, currentNode.coordinates.y + 1)
-        )], endNode, pathStack);
+            DFS(neighborNode, endNode, pathStack);
+        }
     }
 
     if (currentNode.coordinates.x - 1 >= 0) {
-        DFS(graph[getIndexByRowCol(
-            new Coordinate(currentNode.coordinates.x - 1, currentNode.coordinates.y)
-        )], endNode, pathStack);
+        let neighborIndex = getIndexByRowCol(new Coordinate(
+            currentNode.coordinates.x - 1, 
+            currentNode.coordinates.y
+        ));
+
+        let neighborNode = graph[neighborIndex];
+        
+        if (!neighborNode.isVisited) {
+            neighborNode.parent = currentNode;
+    
+            DFS(neighborNode, endNode, pathStack);
+        }
     }
 
-    
     if (currentNode.coordinates.y - 1 >= 0) {
-        DFS(graph[getIndexByRowCol(
-            new Coordinate(currentNode.coordinates.x, currentNode.coordinates.y - 1)
-        )], endNode, pathStack);
+        let neighborIndex = getIndexByRowCol(new Coordinate(
+            currentNode.coordinates.x, 
+            currentNode.coordinates.y - 1
+        ));
+
+        let neighborNode = graph[neighborIndex];
+       
+        if (!neighborNode.isVisited) {
+            neighborNode.parent = currentNode;
+    
+            DFS(neighborNode, endNode, pathStack);
+        }
     }
 
 }

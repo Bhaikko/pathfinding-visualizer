@@ -5,10 +5,12 @@ const graphHeight = graphDiv.offsetHeight
 const nodeWidth = 50;
 const nodeHeight = 50;
 
-// const colCount = Math.floor(graphWidth / nodeWidth);
-// const rowCount = Math.floor(graphHeight / nodeHeight);
-const colCount = 4;
-const rowCount = 4;
+const intervalBetweenPathPaint = 250;
+
+const colCount = Math.floor(graphWidth / nodeWidth);
+const rowCount = Math.floor(graphHeight / nodeHeight);
+// const colCount = 4;
+// const rowCount = 4;
 
 const graph = [];
 
@@ -48,18 +50,12 @@ endNode.htmlRef.classList.add("graph-node-end");
 // Accessing Node of Graph
 // graph[getIndexByRowCol(0, 0)].htmlRef.setAttribute("class", "hello");
 
-// Need Fix
-const paintPath = pathCoords => {
-    graph.map(node => {
-        pathCoords.map(coord => {
-            if (
-                node.x == coord[0] && 
-                node.y == coord[1]
-            ) {
-                node.htmlRef.classList.add("graph-node-green");
-            }
-        })
-    })
+const paintPath = pathStack => {
+    pathStack.map((node, i) => {
+        setTimeout(() => {
+            node.htmlRef.classList.add("graph-node-green");
+        }, i * intervalBetweenPathPaint)
+    });
 }
 
 

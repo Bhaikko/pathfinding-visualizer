@@ -16,17 +16,20 @@ const DFS = (currentNode, endNode, pathStack) => {
         currentNode.coordinates.x === endNode.coordinates.x &&
         currentNode.coordinates.y === endNode.coordinates.y
     ) {
+        console.log(currentNode.coordinates, endNode.coordinates)
+
         // Path Found
         pathFound = true;
         GetPathStack(endNode, pathStack);
         return;
     }
 
-    if (currentNode.isVisited || pathFound) {
+    if (currentNode.isVisited) {
         return;
     }
     
     currentNode.isVisited = true;
+    // pathStack.Push(currentNode);
 
     if (currentNode.coordinates.x + 1 < colCount) {
         let neighborIndex = getIndexByRowCol(new Coordinate(
@@ -40,6 +43,10 @@ const DFS = (currentNode, endNode, pathStack) => {
             neighborNode.parent = currentNode;
     
             DFS(neighborNode, endNode, pathStack);
+
+            if (pathFound) {
+                return;
+            }
         }
 
     }
@@ -56,6 +63,10 @@ const DFS = (currentNode, endNode, pathStack) => {
             neighborNode.parent = currentNode;
     
             DFS(neighborNode, endNode, pathStack);
+
+            if (pathFound) {
+                return;
+            }
         }
     }
 
@@ -71,6 +82,10 @@ const DFS = (currentNode, endNode, pathStack) => {
             neighborNode.parent = currentNode;
     
             DFS(neighborNode, endNode, pathStack);
+
+            if (pathFound) {
+                return;
+            }
         }
     }
 
@@ -86,6 +101,10 @@ const DFS = (currentNode, endNode, pathStack) => {
             neighborNode.parent = currentNode;
     
             DFS(neighborNode, endNode, pathStack);
+
+            if (pathFound) {
+                return;
+            }
         }
     }
 

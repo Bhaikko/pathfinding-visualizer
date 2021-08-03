@@ -5,7 +5,7 @@ const graphHeight = graphDiv.offsetHeight
 const nodeWidth = 50;
 const nodeHeight = 50;
 
-const intervalBetweenPathPaint = 250;
+const intervalBetweenPathPaint = 10;
 
 const colCount = Math.floor(graphWidth / nodeWidth);
 const rowCount = Math.floor(graphHeight / nodeHeight);
@@ -15,8 +15,8 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor((colCount - 1)) - 1,
-    Math.floor((rowCount - 1))
+    Math.floor((colCount - 1)) - 5,
+    Math.floor((rowCount - 1)) - 5
 );
 
 const startCoord = new Coordinate(1, 1);
@@ -32,7 +32,7 @@ for (let i = 0; i < rowCount; i++) {
         graphNode.className = "graph-node";
         graphNode.style.width = `${nodeWidth}px`;
         graphNode.style.height = `${nodeHeight}px`;
-        graphNode.textContent = `(${j}, ${i})`;  // For Coordinate Show
+        // graphNode.textContent = `(${j}, ${i})`;  // For Coordinate Show
 
         graph.push(new Node(j, i, graphNode));
 
@@ -51,6 +51,7 @@ endNode.htmlRef.classList.add("graph-node-end");
 // graph[getIndexByRowCol(0, 0)].htmlRef.setAttribute("class", "hello");
 
 const paintPath = pathStack => {
+    pathStack.reverse();
     pathStack.map((node, i) => {
         setTimeout(() => {
             node.htmlRef.classList.add("graph-node-green");

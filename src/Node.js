@@ -14,5 +14,7 @@ class Node {
         this.isEnd = false;
         this.isBlocked = false;
         this.parent = null;
+
+        this.nodeConsidered = [];
     }
 }

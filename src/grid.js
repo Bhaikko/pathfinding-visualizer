@@ -15,8 +15,8 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor((colCount - 1)) - 5,
-    Math.floor((rowCount - 1)) - 5
+    Math.floor((colCount - 1)),
+    Math.floor((rowCount - 1))
 );
 
 const startCoord = new Coordinate(1, 1);
@@ -59,18 +59,18 @@ for (let i = 0; i < rowCount; i++) {
 const startNode = graph[getIndexByRowCol(startCoord)];
 const endNode = graph[getIndexByRowCol(endCoord)];
 
-
 startNode.htmlRef.classList.add("graph-node-start");
 endNode.htmlRef.classList.add("graph-node-end");
 
-// Accessing Node of Graph
-// graph[getIndexByRowCol(0, 0)].htmlRef.setAttribute("class", "hello");
-
-const paintPath = pathStack => {
+const paintPath = (pathStack, className) => {
     pathStack.reverse();
     pathStack.map((node, i) => {
         setTimeout(() => {
-            node.htmlRef.classList.add("graph-node-green");
+            if (node === startNode || node === endNode) {
+                return;
+            }
+            node.htmlRef.classList.add(className);
+            // node.htmlRef.classList.add("graph-node-green");
         }, i * intervalBetweenPathPaint)
     });
 }

@@ -11,12 +11,13 @@ const GetPathStack = (endNode, pathStack) => {
 
 let pathFound = false;
 
-const DFS = (currentNode, endNode, pathStack) => {
+
+const DFS = (currentNode, endNode, pathStack, nodesVisited) => {
     if (
         currentNode.coordinates.x === endNode.coordinates.x &&
         currentNode.coordinates.y === endNode.coordinates.y
     ) {
-        console.log(currentNode.coordinates, endNode.coordinates)
+        // console.log(currentNode.coordinates, endNode.coordinates)
 
         // Path Found
         pathFound = true;
@@ -29,7 +30,7 @@ const DFS = (currentNode, endNode, pathStack) => {
     }
     
     currentNode.isVisited = true;
-    // pathStack.Push(currentNode);
+    nodesVisited.push(currentNode);
 
     if (currentNode.coordinates.x + 1 < colCount) {
         let neighborIndex = getIndexByRowCol(new Coordinate(
@@ -42,7 +43,7 @@ const DFS = (currentNode, endNode, pathStack) => {
         if (!neighborNode.isVisited) {
             neighborNode.parent = currentNode;
     
-            DFS(neighborNode, endNode, pathStack);
+            DFS(neighborNode, endNode, pathStack, nodesVisited);
 
             if (pathFound) {
                 return;
@@ -62,7 +63,7 @@ const DFS = (currentNode, endNode, pathStack) => {
         if (!neighborNode.isVisited) {
             neighborNode.parent = currentNode;
     
-            DFS(neighborNode, endNode, pathStack);
+            DFS(neighborNode, endNode, pathStack, nodesVisited);
 
             if (pathFound) {
                 return;
@@ -81,7 +82,7 @@ const DFS = (currentNode, endNode, pathStack) => {
         if (!neighborNode.isVisited) {
             neighborNode.parent = currentNode;
     
-            DFS(neighborNode, endNode, pathStack);
+            DFS(neighborNode, endNode, pathStack, nodesVisited);
 
             if (pathFound) {
                 return;
@@ -100,7 +101,7 @@ const DFS = (currentNode, endNode, pathStack) => {
         if (!neighborNode.isVisited) {
             neighborNode.parent = currentNode;
     
-            DFS(neighborNode, endNode, pathStack);
+            DFS(neighborNode, endNode, pathStack, nodesVisited);
 
             if (pathFound) {
                 return;

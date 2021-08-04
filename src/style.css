@@ -71,3 +71,7 @@ code {
 .graph-node:hover {
     background-color: #56c9e2;
 }
+
+#visualize-btn {
+    margin-top: 10px;
+}

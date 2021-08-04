@@ -1,6 +1,6 @@
 let pathStack = new Stack();
 
-DFS(startNode, endNode, pathStack);
+// DFS(startNode, endNode, pathStack);
 
 if (pathStack == null) {
     console.log("No Path Found");

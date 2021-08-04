@@ -24,7 +24,7 @@ const DFS = (currentNode, endNode, pathStack) => {
         return;
     }
 
-    if (currentNode.isVisited) {
+    if (currentNode.isVisited || currentNode.isBlocked) {
         return;
     }
     

@@ -24,8 +24,21 @@ const startCoord = new Coordinate(1, 1);
 // console.log(colCount, rowCount);
 // console.log(endCoord);
 
+const attachHandlers = node => {
+    node.htmlRef.addEventListener("click", event => {
+        node.isBlocked = !node.isBlocked;
+
+        if (node.isBlocked) {
+            node.htmlRef.classList.add("graph-node-block");
+        } else {
+            node.htmlRef.classList.remove("graph-node-block");
+        }
+    });
+}
+
 const getIndexByRowCol = (coord) => (coord.y * colCount + coord.x);
 
+// Building Grid
 for (let i = 0; i < rowCount; i++) {
     for (let j = 0; j < colCount; j++) {
         let graphNode = document.createElement("span");
@@ -34,7 +47,10 @@ for (let i = 0; i < rowCount; i++) {
         graphNode.style.height = `${nodeHeight}px`;
         // graphNode.textContent = `(${j}, ${i})`;  // For Coordinate Show
 
-        graph.push(new Node(j, i, graphNode));
+        let newNode = new Node(j, i, graphNode);
+        graph.push(newNode);
+
+        attachHandlers(newNode);
 
         graphDiv.appendChild(graphNode);
     }

@@ -2,8 +2,10 @@ const graphDiv = document.getElementById("graph");
 
 const graphWidth = graphDiv.offsetWidth;
 const graphHeight = graphDiv.offsetHeight
-const nodeWidth = 50;
-const nodeHeight = 50;
+
+let nodeSize = 50;
+const nodeWidth = nodeSize;
+const nodeHeight = nodeSize;
 
 const intervalBetweenPathPaint = 10;
 
@@ -15,8 +17,8 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor((colCount - 1)),
-    Math.floor((rowCount - 1))
+    Math.floor((colCount - 1)) - 10,
+    Math.floor((rowCount - 1)) - 15
 );
 
 const startCoord = new Coordinate(1, 1);

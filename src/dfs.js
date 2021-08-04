@@ -7,6 +7,8 @@ const GetPathStack = (endNode, pathStack) => {
         pathStack.Push(currentNode);
         currentNode = currentNode.parent;
     }
+
+    pathStack.stack.reverse();
 }
 
 let pathFound = false;

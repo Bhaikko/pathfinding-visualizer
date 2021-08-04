@@ -63,14 +63,14 @@ startNode.htmlRef.classList.add("graph-node-start");
 endNode.htmlRef.classList.add("graph-node-end");
 
 const paintPath = (pathStack, className) => {
-    pathStack.reverse();
+    
     pathStack.map((node, i) => {
         setTimeout(() => {
             if (node === startNode || node === endNode) {
                 return;
             }
+
             node.htmlRef.classList.add(className);
-            // node.htmlRef.classList.add("graph-node-green");
         }, i * intervalBetweenPathPaint)
     });
 }

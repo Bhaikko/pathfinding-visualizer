@@ -7,7 +7,7 @@ let nodeSize = 50;
 const nodeWidth = nodeSize;
 const nodeHeight = nodeSize;
 
-const intervalBetweenPathPaint = 10;
+const intervalBetweenPathPaint = 1000;
 
 const colCount = Math.floor(graphWidth / nodeWidth);
 const rowCount = Math.floor(graphHeight / nodeHeight);
@@ -73,7 +73,7 @@ const paintPath = (pathStack, className) => {
             }
 
             node.htmlRef.classList.add(className);
-        }, i * intervalBetweenPathPaint)
+        }, intervalBetweenPathPaint)
     });
 }
 

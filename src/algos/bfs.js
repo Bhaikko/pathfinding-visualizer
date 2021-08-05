@@ -42,7 +42,7 @@ class BFS {
         
                 let neighborNode = graph[neighborIndex];
         
-                if (!neighborNode.isVisited) {
+                if (!neighborNode.isVisited && !neighborNode.isBlocked) {
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode; 
                 }
@@ -56,7 +56,7 @@ class BFS {
         
                 let neighborNode = graph[neighborIndex];
         
-                if (!neighborNode.isVisited) {
+                if (!neighborNode.isVisited && !neighborNode.isBlocked) {
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode;
                 }
@@ -70,7 +70,7 @@ class BFS {
         
                 let neighborNode = graph[neighborIndex];
         
-                if (!neighborNode.isVisited) {
+                if (!neighborNode.isVisited && !neighborNode.isBlocked) {
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode;
                 }
@@ -84,7 +84,7 @@ class BFS {
         
                 let neighborNode = graph[neighborIndex];
         
-                if (!neighborNode.isVisited) {
+                if (!neighborNode.isVisited && !neighborNode.isBlocked) {
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode;
                 }

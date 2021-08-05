@@ -32,3 +32,7 @@ console.log(queue.Front());
 // queue contains [30, 40, 50, 60]
 queue.Pop();
   
+console.log(queue.items);
+
+queue.Push(10);
+console.log(queue.items);

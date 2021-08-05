@@ -17,8 +17,8 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor((colCount - 1)) - 10,
-    Math.floor((rowCount - 1)) - 15
+    Math.floor((colCount - 1)) - 5,
+    Math.floor((rowCount - 1)) - 5
 );
 
 const startCoord = new Coordinate(1, 1);

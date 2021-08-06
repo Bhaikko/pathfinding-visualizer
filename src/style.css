@@ -28,8 +28,9 @@ code {
     margin-left: 25px;
     padding: 10px;
     color: black;
-    width: 95vw;
-    min-height: 75vh;
+    width: 70vw;
+    height: 85vh;
+    /* min-height: 75vh; */
     border: 2px solid white;
     padding: 0;
     line-height: 0;
@@ -74,4 +75,15 @@ code {
 
 #visualize-btn {
     margin-top: 10px;
+    margin-left: 10px;
+}
+
+#app {
+    display: flex;
+    width: 100vw;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
 }

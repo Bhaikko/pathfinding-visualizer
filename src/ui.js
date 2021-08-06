@@ -1,22 +1,33 @@
 const visualizeBtn = document.getElementById("visualize-btn");
+const algoSelect = document.getElementById("algo-select");
 
 visualizeBtn.addEventListener("click", event => {
-    // let pathStack = new Stack();
-    // let nodesVisited = [];
+    // console.log(algoSelect.value);
+    let currentAlgo = null;
 
-    const dfs = new BFS();
-    dfs.Bfs(startNode, endNode);
+    switch (algoSelect.value) {
+        case "dfs":
+            currentAlgo = new DFS();
+            break;
 
-    // DFS(startNode, endNode, pathStack, nodesVisited);
+        case "bfs":
+            currentAlgo = new BFS();
+            break;
 
-    if (dfs.pathNodes.stack.length === 0) {
+        default:
+            break;
+    }
+
+    currentAlgo.Execute(startNode, endNode);
+
+    if (currentAlgo.pathNodes.stack.length === 0) {
         console.log("No Path Found");
     } else {
         // console.log(pathStack.stack);
-        paintPath(dfs.visitedNodes, "graph-node-red");
+        paintPath(currentAlgo.visitedNodes, "graph-node-red");
 
         setTimeout(() => {
-            paintPath(dfs.pathNodes.stack, "graph-node-green");
+            paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
         }, 1000)
     }
 });

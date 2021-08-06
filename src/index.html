@@ -11,9 +11,17 @@
 <body>
     <div class="header">Pathfinder Visualizer</div>
 
-    <div id="graph"></div>
+    <div id="app">
+        <div id="graph"></div>
+        <div id="controls">
+            <button id="visualize-btn">Visualise</button>
+            <select id="algo-select">
+                <option value="bfs" >BFS</option>
+                <option value="dfs" >DFS</option>
+            </select>
+        </div>
+    </div>
 
-    <button id="visualize-btn">Visualise</button>
 
     <script src="./include/Queue.js"></script>
     <script src="./include/Stack.js"></script>

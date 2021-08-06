@@ -6,6 +6,10 @@ class BFS {
         this.visitedNodes = [];
     }
 
+    Execute = (startNode, endNode) => {
+        this.Bfs(startNode, endNode);
+    }
+
     GetPathStack = endNode => {
         let currentNode = endNode;
         

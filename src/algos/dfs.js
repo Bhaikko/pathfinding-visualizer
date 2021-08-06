@@ -6,7 +6,10 @@ class DFS {
         this.visitedNodes = [];
     }   
 
-    // Returns Path Array
+    Execute = (startNode, endNode) => {
+        this.Dfs(startNode, endNode);
+    }
+
     GetPathStack = endNode => {
         let currentNode = endNode;
         
@@ -23,10 +26,7 @@ class DFS {
         if (
             currentNode.coordinates.x === endNode.coordinates.x &&
             currentNode.coordinates.y === endNode.coordinates.y
-        ) {
-            // console.log(currentNode.coordinates, endNode.coordinates)
-    
-            // Path Found
+        ) {    
             this.pathFound = true;
             this.GetPathStack(endNode);
             return;

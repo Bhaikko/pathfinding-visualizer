@@ -3,11 +3,11 @@ const graphDiv = document.getElementById("graph");
 const graphWidth = graphDiv.offsetWidth;
 const graphHeight = graphDiv.offsetHeight
 
-let nodeSize = 50;
+let nodeSize = 20;
 const nodeWidth = nodeSize;
 const nodeHeight = nodeSize;
 
-const intervalBetweenPathPaint = 1000;
+const intervalBetweenPathPaint = 10;
 
 const colCount = Math.floor(graphWidth / nodeWidth);
 const rowCount = Math.floor(graphHeight / nodeHeight);
@@ -73,7 +73,7 @@ const paintPath = (pathStack, className) => {
             }
 
             node.htmlRef.classList.add(className);
-        }, intervalBetweenPathPaint)
+        }, i * 0.01 * intervalBetweenPathPaint)
     });
 }
 

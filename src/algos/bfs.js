@@ -17,22 +17,30 @@ class BFS {
         this.pathNodes.stack.reverse();
     }
 
-    Bfs = (currentNode, endNode) => {
+    Bfs = (startNode, endNode) => {
         let pendingNodes = new Queue();
 
-        pendingNodes.Push(currentNode);
+        pendingNodes.Push(startNode);
 
         while (!pendingNodes.IsEmpty()) {
             let currentNode = pendingNodes.Front();
-            
             currentNode.isVisited = true;
-            if (currentNode == endNode) {
-                this.pathFound = true;
-                this.GetPathStack(endNode);
-                return;
-            }
+            pendingNodes.Pop();
 
             this.visitedNodes.push(currentNode);
+
+            if (
+                currentNode.coordinates.x === endNode.coordinates.x &&
+                currentNode.coordinates.y === endNode.coordinates.y
+            ) {
+                this.pathFound = true;
+                this.GetPathStack(endNode);
+                break;
+            }
+
+            if (this.pathFound) {
+                break;
+            }
 
             if (currentNode.coordinates.x + 1 < colCount) {
                 let neighborIndex = getIndexByRowCol(new Coordinate(
@@ -43,6 +51,7 @@ class BFS {
                 let neighborNode = graph[neighborIndex];
         
                 if (!neighborNode.isVisited && !neighborNode.isBlocked) {
+                    neighborNode.isVisited = true;
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode; 
                 }
@@ -57,6 +66,7 @@ class BFS {
                 let neighborNode = graph[neighborIndex];
         
                 if (!neighborNode.isVisited && !neighborNode.isBlocked) {
+                    neighborNode.isVisited = true;
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode;
                 }
@@ -71,6 +81,7 @@ class BFS {
                 let neighborNode = graph[neighborIndex];
         
                 if (!neighborNode.isVisited && !neighborNode.isBlocked) {
+                    neighborNode.isVisited = true;
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode;
                 }
@@ -85,12 +96,11 @@ class BFS {
                 let neighborNode = graph[neighborIndex];
         
                 if (!neighborNode.isVisited && !neighborNode.isBlocked) {
+                    neighborNode.isVisited = true;
                     pendingNodes.Push(neighborNode);
                     neighborNode.parent = currentNode;
                 }
             }
-
-            pendingNodes.Pop();
         }
     }
 }

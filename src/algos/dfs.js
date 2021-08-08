@@ -21,6 +21,10 @@ class DFS {
         this.pathNodes.stack.reverse();
     }
 
+    ProcessNeighbor = (currentNode, neighborNode) => {
+        
+    }
+
 
     Dfs = (currentNode, endNode) => {
         if (

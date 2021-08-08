@@ -14,6 +14,7 @@ class Node {
         this.isEnd = false;
         this.isBlocked = false;
         this.parent = null;
+        this.distanceFromSource = Number.MAX_SAFE_INTEGER;
 
         this.nodeConsidered = [];
     }

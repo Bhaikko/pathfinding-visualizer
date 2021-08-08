@@ -14,6 +14,10 @@ visualizeBtn.addEventListener("click", event => {
             currentAlgo = new BFS();
             break;
 
+        case "dijsktra":
+            currentAlgo = new Dijkstra();
+            break;
+
         default:
             break;
     }

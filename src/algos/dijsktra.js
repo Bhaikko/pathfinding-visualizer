@@ -26,6 +26,9 @@ class Dijkstra {
     }
 
     ProcessNeighborNode = (minVertex, neighborNode, pendingNodes) => {
+        if (neighborNode.isBlocked) {
+            return;
+        }
         
         let distance = minVertex.distanceFromSource + 1;
 
@@ -75,6 +78,7 @@ class Dijkstra {
                 ));
                 
                 let neighborNode = graph[neighborIndex];
+
                 this.ProcessNeighborNode(minVertex, neighborNode, pendingNodes);
                 
             }   

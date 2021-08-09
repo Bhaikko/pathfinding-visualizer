@@ -21,8 +21,12 @@ class DFS {
         this.pathNodes.stack.reverse();
     }
 
-    ProcessNeighbor = (currentNode, neighborNode) => {
-        
+    ProcessNeighbor = (currentNode, neighborNode, endNode) => {
+        if (!neighborNode.isVisited) {
+            neighborNode.parent = currentNode;
+
+            this.Dfs(neighborNode, endNode);
+        }
     }
 
 
@@ -51,16 +55,11 @@ class DFS {
     
             let neighborNode = graph[neighborIndex];
     
-            if (!neighborNode.isVisited) {
-                neighborNode.parent = currentNode;
-        
-                this.Dfs(neighborNode, endNode);
-    
-                if (this.pathFound) {
-                    return;
-                }
+            this.ProcessNeighbor(currentNode, neighborNode, endNode);
+            
+            if (this.pathFound) {
+                return;
             }
-    
         }
     
         if (currentNode.coordinates.y + 1 < rowCount) {
@@ -71,14 +70,10 @@ class DFS {
     
             let neighborNode = graph[neighborIndex];
             
-            if (!neighborNode.isVisited) {
-                neighborNode.parent = currentNode;
-        
-                this.Dfs(neighborNode, endNode);
-    
-                if (this.pathFound) {
-                    return;
-                }
+            this.ProcessNeighbor(currentNode, neighborNode, endNode);
+            
+            if (this.pathFound) {
+                return;
             }
         }
     
@@ -90,14 +85,10 @@ class DFS {
     
             let neighborNode = graph[neighborIndex];
             
-            if (!neighborNode.isVisited) {
-                neighborNode.parent = currentNode;
-        
-                this.Dfs(neighborNode, endNode);
-    
-                if (this.pathFound) {
-                    return;
-                }
+            this.ProcessNeighbor(currentNode, neighborNode, endNode);
+            
+            if (this.pathFound) {
+                return;
             }
         }
     
@@ -108,15 +99,11 @@ class DFS {
             ));
     
             let neighborNode = graph[neighborIndex];
-           
-            if (!neighborNode.isVisited) {
-                neighborNode.parent = currentNode;
-        
-                this.Dfs(neighborNode, endNode);
-    
-                if (this.pathFound) {
-                    return;
-                }
+            
+            this.ProcessNeighbor(currentNode, neighborNode, endNode);
+            
+            if (this.pathFound) {
+                return;
             }
         }
     }

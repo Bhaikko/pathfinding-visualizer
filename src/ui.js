@@ -18,6 +18,10 @@ visualizeBtn.addEventListener("click", event => {
             currentAlgo = new Dijkstra();
             break;
 
+        case "astar":
+            currentAlgo = new Astar();
+            break;
+
         default:
             break;
     }

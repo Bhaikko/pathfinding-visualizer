@@ -16,6 +16,9 @@ class Node {
         this.parent = null;
         this.distanceFromSource = Number.MAX_SAFE_INTEGER;
 
+        this.gCost = 0;
+        this.hCost = 0;
+
         this.nodeConsidered = [];
     }
 }

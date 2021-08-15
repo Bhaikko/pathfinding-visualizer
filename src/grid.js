@@ -73,7 +73,7 @@ const paintPath = (pathStack, className) => {
             }
 
             node.htmlRef.classList.add(className);
-        }, i * 0.01 * intervalBetweenPathPaint)
+        }, i * 0.1 * intervalBetweenPathPaint)
     });
 }
 

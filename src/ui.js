@@ -36,6 +36,6 @@ visualizeBtn.addEventListener("click", event => {
 
         setTimeout(() => {
             paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
-        }, 1000)
+        }, 1500)
     }
 });

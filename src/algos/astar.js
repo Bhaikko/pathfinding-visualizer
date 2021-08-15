@@ -114,7 +114,7 @@ class Astar {
     }
 
     aStar = (startNode, endNode) => {
-        let openset = new PriorityQueue(this.Compare);
+        let openset = new PriorityQueue(this.FCostMinHeap);
         let closedSet = {};
 
         // closedSet[this.GetNodeKey(startNode)] = startNode;
@@ -122,10 +122,12 @@ class Astar {
         
         while (!openset.isEmpty()) {
             let current = openset.peek();
-            // this.visitedNodes.push(current);
+            this.visitedNodes.push(current);
 
-            openset.pop();
+            // console.log(current.coordinates);
+
             closedSet[this.GetNodeKey(current)] = current;
+            openset.pop();
 
             if (
                 current.coordinates.x === endNode.coordinates.x &&
@@ -157,7 +159,6 @@ class Astar {
                 ) {
                     neighbor.gCost = newMovementCostToNeighbor;
                     neighbor.hCost = this.Distance(neighbor, endNode);
-
                     neighbor.parent = current;
 
                     if (!this.OpensetContains(openset, neighbor)) {

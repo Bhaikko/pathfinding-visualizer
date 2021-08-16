@@ -7,6 +7,8 @@
     <title>Pathfinding Visualizer</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dropdown.css">
+    <link rel="stylesheet" href="statistics.css">
 </head>
 <body>
     <div class="header">Pathfinder Visualizer</div>
@@ -14,13 +16,40 @@
     <div id="app">
         <div id="graph"></div>
         <div id="controls">
+            <div class="dropdown-container">
+                <div class="dropdown-header">Algorithm</div>
+                <div class="dropdown">
+                    <select id="algo-select" class="dropdown-select">
+                        <option value="astar" >A Star</option>
+                        <option value="dijsktra" >Dijsktra</option>
+                        <option value="bfs" >BFS</option>
+                        <option value="dfs" >DFS</option>
+                    </select>
+                </div>
+            </div>
             <button id="visualize-btn">Visualise</button>
-            <select id="algo-select">
-                <option value="astar" >A Star</option>
-                <option value="dijsktra" >Dijsktra</option>
-                <option value="bfs" >BFS</option>
-                <option value="dfs" >DFS</option>
-            </select>
+
+            <div id="stats-container">
+                <div class="table-header">Statistics</div>
+                <table class="rwd-table">
+                  <tr>
+                    <th>Movie Title</th>
+                    <th>Genre</th>
+                  </tr>
+                  <tr>
+                    <td data-th="Movie Title">Star Wars</td>
+                    <td data-th="Genre">Adventure, Sci-fi</td>
+                  </tr>
+                  <tr>
+                    <td data-th="Movie Title">Howard The Duck</td>
+                    <td data-th="Genre">"Comedy"</td>
+                  </tr>
+                  <tr>
+                    <td data-th="Movie Title">American Graffiti</td>
+                    <td data-th="Genre">Comedy, Drama</td>
+                  </tr>
+                </table>
+            </div>
         </div>
     </div>
 

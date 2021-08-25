@@ -22,6 +22,10 @@ visualizeBtn.addEventListener("click", event => {
             currentAlgo = new Astar();
             break;
 
+        case "astarPS":
+            currentAlgo = new AstarPS();
+            break;
+
         default:
             break;
     }

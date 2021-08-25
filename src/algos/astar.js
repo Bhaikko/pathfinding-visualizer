@@ -1,6 +1,6 @@
 class Astar {
     constructor() {
-        this.pathFound = 0;
+        this.pathFound = false;
 
         this.pathNodes = new Stack();
         this.visitedNodes = [];

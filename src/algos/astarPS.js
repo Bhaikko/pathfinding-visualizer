@@ -24,7 +24,9 @@ class AstarPS {
 
 
         for (let i = 1; i < patharray.length - 1; i++) {
-            if (!this.LineOfSight(current, patharray[i + 1])) {
+            let isInLOS = this.LineOfSight(current, patharray[i + 1]);
+            // console.log(isInLOS);
+            if (isInLOS) {
                 this.pathNodes.Push(patharray[i]);
                 current = patharray[i];
             }
@@ -32,11 +34,16 @@ class AstarPS {
 
         this.pathNodes.Push(patharray[patharray.length - 1]);
         
+        console.log(this.pathNodes.stack);
 
     }
 
     IsBlockedOnGrid = (x, y) => {
-        // TODO
+        let neighbor = graph[getIndexByRowCol(new Coordinate(
+            x, y
+        ))];
+
+        return neighbor.isBlocked;
     }
 
     LineOfSight = (source, destination) => {
@@ -71,19 +78,73 @@ class AstarPS {
         if (dx >= dy) {
             while (x0 != x1) {
                 f = f + dy;
-                if (f >= d) {
+                if (f >= dx) {
                     if (this.IsBlockedOnGrid(
-                        // TODO
-                    ))
+                        x0 + ((sx - 1) / 2), y0 + ((sy - 1) / 2)
+                    )) {
+                        return false;
+                    }
+
+                    y0 = y0 + sy;
+                    f = f - dx;
                 }
+
+                if (
+                    f != 0 && 
+                    this.IsBlockedOnGrid(
+                        x0 + ((sx - 1) / 2), 
+                        y0 + ((sy - 1) / 2)
+                    )
+                ) {
+                    return false;
+                }
+
+                if (
+                    dy == 0 &&
+                    this.IsBlockedOnGrid(x0 + ((sx - 1) / 2), y0) &&
+                    this.IsBlockedOnGrid(x0 + ((sx - 1) / 2), y0 - 1) 
+                ) {
+                    return false;
+                }
+
+                x0 = x0 + sx;
             }
         } else {
-
+            while (y0 != y1) {
+                f = f + dx;
+    
+                if (f >= dy) {
+                    if (this.IsBlockedOnGrid(
+                        x0 + ((sx - 1) / 2), y0 + ((sy - 1) / 2) 
+                    )) {
+                        return false;
+                    }
+    
+                    x0 = x0 + sx;
+                    f = f - dy;
+                }
+    
+                if (
+                    f != 0 &&
+                    this.IsBlockedOnGrid(
+                        x0 + ((sx - 1) / 2), y0 + ((sy - 1)/ 2)
+                    )
+                ) {
+                    return false;
+                }
+    
+                if (
+                    dx == 0 &&
+                    this.IsBlockedOnGrid(x0, y0 + ((sy - 1) / 2)) && 
+                    this.IsBlockedOnGrid(x0 - 1, y0 + ((sy - 1) / 2)) 
+                ) {
+                    return false;
+                }
+    
+                y0 = y0 + sy;
+            }
         }
 
-
-
-
-        
+        return true;
     }
 }

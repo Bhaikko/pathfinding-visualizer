@@ -42,7 +42,6 @@ visualizeBtn.addEventListener("click", event => {
         paintPath(currentAlgo.visitedNodes, "graph-node-red");
         if (drawLinePath) {
             setTimeout(() => {
-                // paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
                 pathLinePath(currentAlgo.pathNodes.stack, "graph-node-green");
             }, 1500)
         } else {

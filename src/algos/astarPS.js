@@ -12,8 +12,6 @@ class AstarPS {
         astar.Execute(startNode, endNode);
 
         this.SmoothPath(astar.pathNodes);
-
-        // this.pathNodes = astar.pathNodes;
         this.visitedNodes = astar.visitedNodes;
     }
 

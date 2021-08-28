@@ -3,7 +3,7 @@ const graphDiv = document.getElementById("graph");
 const graphWidth = graphDiv.offsetWidth;
 const graphHeight = graphDiv.offsetHeight
 
-let nodeSize = 20;
+let nodeSize = 50;
 const nodeWidth = nodeSize;
 const nodeHeight = nodeSize;
 
@@ -17,8 +17,8 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 const graph = [];
 
 const endCoord = new Coordinate(
-    Math.floor((colCount - 1)) - 5,
-    Math.floor((rowCount - 1)) - 5
+    Math.floor((colCount - 1)) - 2,
+    Math.floor((rowCount - 1)) - 2
 );
 
 const startCoord = new Coordinate(1, 1);

@@ -4,6 +4,7 @@ const algoSelect = document.getElementById("algo-select");
 visualizeBtn.addEventListener("click", event => {
     // console.log(algoSelect.value);
     let currentAlgo = null;
+    let drawLinePath = false;
 
     switch (algoSelect.value) {
         case "dfs":
@@ -24,6 +25,7 @@ visualizeBtn.addEventListener("click", event => {
 
         case "astarPS":
             currentAlgo = new AstarPS();
+            drawLinePath = true;
             break;
 
         default:
@@ -36,10 +38,17 @@ visualizeBtn.addEventListener("click", event => {
         console.log("No Path Found");
     } else {
         // console.log(pathStack.stack);
-        paintPath(currentAlgo.visitedNodes, "graph-node-red");
 
-        setTimeout(() => {
-            paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
-        }, 1500)
+        paintPath(currentAlgo.visitedNodes, "graph-node-red");
+        if (drawLinePath) {
+            setTimeout(() => {
+                // paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
+                pathLinePath(currentAlgo.pathNodes.stack, "graph-node-green");
+            }, 1500)
+        } else {
+            setTimeout(() => {
+                paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
+            }, 1500)
+        }
     }
 });

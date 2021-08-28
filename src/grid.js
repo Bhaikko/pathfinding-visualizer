@@ -77,6 +77,49 @@ const paintPath = (pathStack, className) => {
     });
 }
 
+const linedraw = (x1, y1, x2, y2) => {
+    if (x2 < x1) {
+        var tmp;
+        tmp = x2 ; x2 = x1 ; x1 = tmp;
+        tmp = y2 ; y2 = y1 ; y1 = tmp;
+    }
+
+    var lineLength = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    var m = (y2 - y1) / (x2 - x1);
+
+    var degree = Math.atan(m) * 180 / Math.PI;
+
+    document.body.innerHTML += 
+        "<div class='line' style='transform-origin: top left; transform: rotate(" + 
+        degree + 
+        "deg); width: " + 
+        lineLength * 2 + 
+        "px; height: 1px; background: black; position: absolute; top: " + 
+        y1 + 
+        "px; left: " + 
+        x1 + 
+        "px;'></div>";
+}
+
+const pathLinePath = (pathStack, className) => {
+    console.log(pathStack);
+    for (let i = 0; i < pathStack.length - 1; i++) {
+        let current = pathStack[i].htmlRef.getBoundingClientRect();
+        let next = pathStack[i + 1].htmlRef.getBoundingClientRect();
+
+        // console.log(current, next);
+
+        // console.log(rect.top);
+
+        linedraw(
+            current.x + nodeSize / 2, 
+            current.y + nodeSize / 2, 
+            next.x + nodeSize / 2, 
+            next.y + nodeSize / 2
+        );
+    }
+        
+}
 
 
 

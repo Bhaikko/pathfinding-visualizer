@@ -19,23 +19,19 @@ class AstarPS {
 
     SmoothPath = path => {
         let patharray = path.stack;
-
+        
         let current = patharray[0];
-
+        this.pathNodes.Push(current);
 
         for (let i = 1; i < patharray.length - 1; i++) {
             let isInLOS = this.LineOfSight(current, patharray[i + 1]);
-            // console.log(isInLOS);
-            if (isInLOS) {
+            if (!isInLOS) {
                 this.pathNodes.Push(patharray[i]);
                 current = patharray[i];
             }
         }
 
         this.pathNodes.Push(patharray[patharray.length - 1]);
-        
-        console.log(this.pathNodes.stack);
-
     }
 
     IsBlockedOnGrid = (x, y) => {

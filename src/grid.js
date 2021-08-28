@@ -26,15 +26,32 @@ const startCoord = new Coordinate(1, 1);
 // console.log(colCount, rowCount);
 // console.log(endCoord);
 
-const attachHandlers = node => {
-    node.htmlRef.addEventListener("click", event => {
-        node.isBlocked = !node.isBlocked;
+const toggleBlocked = node => {
+    node.isBlocked = !node.isBlocked;
+    
+    if (node.isBlocked) {
+        node.htmlRef.classList.add("graph-node-block");
+    } else {
+        node.htmlRef.classList.remove("graph-node-block");
+    }
+}
 
+const setBlockState = (node, state) => {
+    node.isBlocked = state;
+
+    if (node.isBlocked) {
         if (node.isBlocked) {
             node.htmlRef.classList.add("graph-node-block");
         } else {
+            console.log("asd")
             node.htmlRef.classList.remove("graph-node-block");
         }
+    }
+}
+
+const attachHandlers = node => {
+    node.htmlRef.addEventListener("click", event => {
+        toggleBlocked(node);
     });
 }
 
@@ -94,7 +111,7 @@ const linedraw = (x1, y1, x2, y2) => {
         degree + 
         "deg); width: " + 
         lineLength * 2 + 
-        "px; height: 1px; background: black; position: absolute; top: " + 
+        "px; height: 2px; background: black; position: absolute; top: " + 
         y1 + 
         "px; left: " + 
         x1 + 
@@ -102,7 +119,7 @@ const linedraw = (x1, y1, x2, y2) => {
 }
 
 const pathLinePath = (pathStack, className) => {
-    console.log(pathStack);
+    // console.log(pathStack);
     for (let i = 0; i < pathStack.length - 1; i++) {
         let current = pathStack[i].htmlRef.getBoundingClientRect();
         let next = pathStack[i + 1].htmlRef.getBoundingClientRect();
@@ -121,5 +138,20 @@ const pathLinePath = (pathStack, className) => {
         
 }
 
+const resetBlockedCells = () => {
+    graph.map(node => {
+        setBlockState(node, false);
+    });
+}
 
+const makeRandomBlockes = () => {
+    graph.map(node => {
+        if (node === startNode || node === endNode) {
+            return;
+        }
 
+        if (Math.random() < 0.20) {
+            setBlockState(node, true);
+        }
+    });
+}

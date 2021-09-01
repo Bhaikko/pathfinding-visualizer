@@ -43,11 +43,11 @@ visualizeBtn.addEventListener("click", event => {
         if (drawLinePath) {
             setTimeout(() => {
                 pathLinePath(currentAlgo.pathNodes.stack, "graph-node-green");
-            }, 1500)
-        } else {
+            }, 0.1 * graphWidth)
+        } else {            
             setTimeout(() => {
                 paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
-            }, 1500)
+            }, 0.1 * graphWidth)
         }
     }
 });

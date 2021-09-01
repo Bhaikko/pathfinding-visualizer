@@ -1,3 +1,4 @@
+const app = document.getElementById("app");
 const graphDiv = document.getElementById("graph");
 
 const graphWidth = graphDiv.offsetWidth;
@@ -84,8 +85,9 @@ const paintPath = (pathStack, className) => {
             if (node === startNode || node === endNode) {
                 return;
             }
-
+            
             node.htmlRef.classList.add(className);
+            
         }, i * 0.1 * intervalBetweenPathPaint)
     });
 }
@@ -121,7 +123,9 @@ const pathLinePath = (pathStack, className) => {
         let current = pathStack[i].htmlRef.getBoundingClientRect();
         let next = pathStack[i + 1].htmlRef.getBoundingClientRect();
 
-        pathStack[i].htmlRef.classList.add(className);
+        if (i !== 0) {
+            pathStack[i].htmlRef.classList.add(className);
+        }
 
         lineString += linedraw(
             current.x + nodeSize / 2, 
@@ -131,7 +135,7 @@ const pathLinePath = (pathStack, className) => {
         );
     }
 
-    document.body.innerHTML += lineString;
+    app.innerHTML += lineString;
         
 }
 

@@ -16,6 +16,10 @@ class AstarPS {
     }
 
     SmoothPath = path => {
+        if (path.stack.length === 0) {
+            return;
+        }
+
         let patharray = path.stack;
         
         let current = patharray[0];

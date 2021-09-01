@@ -37,17 +37,17 @@ visualizeBtn.addEventListener("click", event => {
     if (currentAlgo.pathNodes.stack.length === 0) {
         console.log("No Path Found");
     } else {
-        // console.log(pathStack.stack);
-
-        paintPath(currentAlgo.visitedNodes, "graph-node-red");
-        if (drawLinePath) {
-            setTimeout(() => {
-                pathLinePath(currentAlgo.pathNodes.stack, "graph-node-green");
-            }, 0.1 * graphWidth)
-        } else {            
-            setTimeout(() => {
-                paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
-            }, 0.1 * graphWidth)
-        }
+        Promise.all(paintPath(currentAlgo.visitedNodes, "graph-node-red"))
+            .then(() => {
+                if (drawLinePath) {
+                    setTimeout(() => {
+                        pathLinePath(currentAlgo.pathNodes.stack, "graph-node-green");
+                    }, 1000)
+                } else {            
+                    setTimeout(() => {
+                        paintPath(currentAlgo.pathNodes.stack, "graph-node-green");
+                    }, 1000)
+                }
+            });
     }
 });

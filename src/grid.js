@@ -4,7 +4,7 @@ const graphDiv = document.getElementById("graph");
 const graphWidth = graphDiv.offsetWidth;
 const graphHeight = graphDiv.offsetHeight
 
-let nodeSize = 50;
+let nodeSize = 20;
 const nodeWidth = nodeSize;
 const nodeHeight = nodeSize;
 
@@ -80,15 +80,18 @@ startNode.htmlRef.classList.add("graph-node-start");
 endNode.htmlRef.classList.add("graph-node-end");
 
 const paintPath = (pathStack, className) => {
-    pathStack.map((node, i) => {
-        setTimeout(() => {
-            if (node === startNode || node === endNode) {
-                return;
-            }
-            
-            node.htmlRef.classList.add(className);
-            
-        }, i * 0.1 * intervalBetweenPathPaint)
+    return pathStack.map((node, i) => {
+        return new Promise((resolve, reject) => {
+            return setTimeout(() => {
+                if (node === startNode || node === endNode) {
+                    resolve();
+                    return;
+                }
+                
+                node.htmlRef.classList.add(className);
+                resolve();
+            }, i * 0.1 * intervalBetweenPathPaint)
+        })
     });
 }
 

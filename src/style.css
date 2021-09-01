@@ -28,7 +28,7 @@ code {
     margin-left: 25px;
     padding: 10px;
     color: black;
-    width: 70vw;
+    width: 80vw;
     height: 85vh;
     /* min-height: 75vh; */
     /* border: 2px solid white; */
@@ -85,5 +85,7 @@ code {
     align-items: center;
     padding: 25px;
     border: 2px solid white;
+    max-width: fit-content;
+    /* height: 50vh; */
 }
 

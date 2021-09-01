@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dropdown.css">
-    <link rel="stylesheet" href="statistics.css">
 </head>
 <body>
     <div class="header">Pathfinder Visualizer</div>
@@ -17,7 +16,7 @@
         <div id="graph"></div>
         <div id="controls">
             <div class="dropdown-container">
-                <div class="dropdown-header">Algorithm</div>
+                <div class="dropdown-header">Algorithm: </div>
                 <div class="dropdown">
                     <select id="algo-select" class="dropdown-select">
                       <option value="astar" >A Star</option>
@@ -28,32 +27,34 @@
                     </select>
                 </div>
             </div>
+            
+            <div class="buttons-container">
+              <button id="random-btn" class="button">Set Blocks</button>
+              <button id="reset-btn" class="button">Reset</button>
+            </div>
 
-            <button id="random-btn" class="button">Random Blocked</button>
-            <button id="reset-btn" class="button">Reset</button>
-            <button id="visualize-btn" class="button">Visualise</button>
+            <div class="buttons-container">
+              <button id="visualize-btn" class="button">Visualise</button>
+            </div>
 
-            <!-- <div id="stats-container">
-                <div class="table-header">Statistics</div>
-                <table class="rwd-table">
-                  <tr>
-                    <th>Movie Title</th>
-                    <th>Genre</th>
-                  </tr>
-                  <tr>
-                    <td data-th="Movie Title">Star Wars</td>
-                    <td data-th="Genre">Adventure, Sci-fi</td>
-                  </tr>
-                  <tr>
-                    <td data-th="Movie Title">Howard The Duck</td>
-                    <td data-th="Genre">"Comedy"</td>
-                  </tr>
-                  <tr>
-                    <td data-th="Movie Title">American Graffiti</td>
-                    <td data-th="Genre">Comedy, Drama</td>
-                  </tr>
-                </table>
-            </div> -->
+            <br/>
+
+            <div class="buttons-container">
+              <button id="visualize-btn" class="button">Place Start</button>
+            </div>
+
+            <div class="buttons-container">
+              <button id="visualize-btn" class="button">Place Block</button>
+            </div>
+
+            <div class="buttons-container">
+              <button id="visualize-btn" class="button">Place End</button>
+            </div>
+
+            <div class="result-container">
+              <div class="result">No Path Found</div>
+            </div>
+
         </div>
     </div>
 
@@ -70,7 +71,7 @@
     <script src="./algos/astar.js"></script>
     <script src="./algos/astarPS.js"></script>
 
-    <!-- Test sctips -->
+    <!-- Test scripts -->
     <!-- <script src="./test/Priority.test.js"></script> -->
     <!-- <script src="./test/Stack.test.js"></script> -->
     <!-- <script src="./test/Queue.test.js"></script> -->

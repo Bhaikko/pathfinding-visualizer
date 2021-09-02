@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinding Visualizer</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dropdown.css">
+    <link rel="stylesheet" href="./../static/style.css">
+    <link rel="stylesheet" href="./../static/dropdown.css">
 </head>
 <body>
-    <div class="header">Pathfinder Visualizer</div>
+    <div class="header">Pathfinding Visualizer</div>
 
     <div id="app">
         <div id="graph"></div>
@@ -74,20 +74,22 @@
         </div>
     </div>
 
-    <script src="./include/PriorityQueue.js"></script>
-    <script src="./include/Queue.js"></script>
-    <script src="./include/Stack.js"></script>
-    <script src="./include/Node.js"></script>
+    <script src="./../include/PriorityQueue.js"></script>
+    <script src="./../include/Queue.js"></script>
+    <script src="./../include/Stack.js"></script>
+    <script src="./../include/Node.js"></script>
 
-    <script src="state.js"></script>
-    <script src="result.js"></script>
-    <script src="grid.js"></script>
-    <script src="buttonHandler.js"></script>
-    <script src="./algos/dfs.js"></script>
-    <script src="./algos/bfs.js"></script>
-    <script src="./algos/dijsktra.js"></script>
-    <script src="./algos/astar.js"></script>
-    <script src="./algos/astarPS.js"></script>
+    <script src="./enum.js"></script>
+
+    <script src="./Handlers/resultHandler.js"></script>
+    <script src="./Handlers/gridHandler.js"></script>
+    <script src="./Handlers/buttonHandler.js"></script>
+
+    <script src="./../lib/dfs.js"></script>
+    <script src="./../lib/bfs.js"></script>
+    <script src="./../lib/dijsktra.js"></script>
+    <script src="./../lib/astar.js"></script>
+    <script src="./../lib/astarPS.js"></script>
 
     <!-- Test scripts -->
     <!-- <script src="./test/Priority.test.js"></script> -->
@@ -95,7 +97,7 @@
     <!-- <script src="./test/Queue.test.js"></script> -->
 
 
-    <script src="ui.js"></script>
+    <script src="./Handlers/algoHandler.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

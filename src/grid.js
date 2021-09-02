@@ -40,6 +40,9 @@ const toggleBlocked = node => {
 const setBlockState = (node, state) => {
     node.isBlocked = state;
 
+    node.htmlRef.classList.remove("graph-node-green");
+    node.htmlRef.classList.remove("graph-node-red");
+
     if (node.isBlocked) {
         node.htmlRef.classList.add("graph-node-block");
     } else {

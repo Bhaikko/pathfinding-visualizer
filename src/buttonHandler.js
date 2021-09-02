@@ -7,4 +7,4 @@ randomBlocksBtn.addEventListener("click", () => {
 
 resetBlockBtn.addEventListener("click", () => {
     resetBlockedCells();
-})
+});

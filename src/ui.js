@@ -35,6 +35,7 @@ visualizeBtn.addEventListener("click", event => {
     currentAlgo.Execute(startNode, endNode);
 
     if (currentAlgo.pathNodes.stack.length === 0) {
+        Promise.all(paintPath(currentAlgo.visitedNodes, "graph-node-red"));
         console.log("No Path Found");
     } else {
         Promise.all(paintPath(currentAlgo.visitedNodes, "graph-node-red"))

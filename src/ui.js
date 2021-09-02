@@ -36,10 +36,12 @@ visualizeBtn.addEventListener("click", event => {
 
     if (currentAlgo.pathNodes.stack.length === 0) {
         Promise.all(paintPath(currentAlgo.visitedNodes, "graph-node-red"));
-        console.log("No Path Found");
+        // console.log("No Path Found");
+        setResult("No Path Found.", "result-red");
     } else {
         Promise.all(paintPath(currentAlgo.visitedNodes, "graph-node-red"))
-            .then(() => {
+        .then(() => {
+                setResult("Path Found.", "result-green");
                 if (drawLinePath) {
                     setTimeout(() => {
                         pathLinePath(currentAlgo.pathNodes.stack, "graph-node-green");

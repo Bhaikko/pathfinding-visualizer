@@ -123,3 +123,17 @@
 .button-selected {
   background:rgb(16, 189, 16);
 }
+
+.result-container {
+  font-size: 32px;
+  margin-top: 20px;
+}
+
+.result-red {
+  color: red;
+}
+
+.result-green {
+  color: green;
+}
+

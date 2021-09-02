@@ -78,7 +78,6 @@ const attachHandlers = node => {
     });
 }
 
-
 // Building Grid
 for (let i = 0; i < rowCount; i++) {
     for (let j = 0; j < colCount; j++) {
@@ -161,6 +160,7 @@ const pathLinePath = (pathStack, className) => {
 }
 
 const resetBlockedCells = () => {
+    resetResult();
     graph.map(node => {
         setBlockState(node, false);
     });

@@ -17,12 +17,6 @@ const rowCount = Math.floor(graphHeight / nodeHeight);
 
 const graph = [];
 
-const endCoord = new Coordinate(
-    Math.floor((colCount - 1)) - 2,
-    Math.floor((rowCount - 1)) - 2
-);
-
-const startCoord = new Coordinate(1, 1);
 
 const toggleBlocked = node => {
     node.isBlocked = !node.isBlocked;
@@ -48,11 +42,18 @@ const setBlockState = (node, state) => {
 }
 
 const setNewStart = node => {
-
+    startNode.htmlRef.classList.remove("graph-node-start");
+    node.isBlocked = false;
+    startNode = node;
+    startNode.htmlRef.classList.add("graph-node-start");
+    
 }
 
 const setNewEnd = node => {
-
+    endNode.htmlRef.classList.remove("graph-node-end");
+    node.isBlocked = false;
+    endNode = node;
+    endNode.htmlRef.classList.add("graph-node-end");
 }
 
 const attachHandlers = node => {
@@ -77,7 +78,6 @@ const attachHandlers = node => {
     });
 }
 
-const getIndexByRowCol = (coord) => (coord.y * colCount + coord.x);
 
 // Building Grid
 for (let i = 0; i < rowCount; i++) {
@@ -96,12 +96,6 @@ for (let i = 0; i < rowCount; i++) {
         graphDiv.appendChild(graphNode);
     }
 }
-
-const startNode = graph[getIndexByRowCol(startCoord)];
-const endNode = graph[getIndexByRowCol(endCoord)];
-
-startNode.htmlRef.classList.add("graph-node-start");
-endNode.htmlRef.classList.add("graph-node-end");
 
 const paintPath = (pathStack, className) => {
     return pathStack.map((node, i) => {
@@ -183,3 +177,18 @@ const makeRandomBlockes = () => {
         }
     });
 }
+
+
+const getIndexByRowCol = (coord) => (coord.y * colCount + coord.x);
+
+let startCoord = new Coordinate(1, 1);
+let endCoord = new Coordinate(
+    Math.floor((colCount - 1)) - 2,
+    Math.floor((rowCount - 1)) - 2
+);
+
+let startNode = graph[getIndexByRowCol(startCoord)];
+let endNode = graph[getIndexByRowCol(endCoord)];
+
+startNode.htmlRef.classList.add("graph-node-start");
+endNode.htmlRef.classList.add("graph-node-end");

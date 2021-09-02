@@ -24,9 +24,6 @@ const endCoord = new Coordinate(
 
 const startCoord = new Coordinate(1, 1);
 
-// console.log(colCount, rowCount);
-// console.log(endCoord);
-
 const toggleBlocked = node => {
     node.isBlocked = !node.isBlocked;
     
@@ -50,9 +47,33 @@ const setBlockState = (node, state) => {
     }
 }
 
+const setNewStart = node => {
+
+}
+
+const setNewEnd = node => {
+
+}
+
 const attachHandlers = node => {
     node.htmlRef.addEventListener("click", event => {
-        toggleBlocked(node);
+        switch (currentButtonState) {
+            case ButtonState.PLACE_START:
+                setNewStart(node);
+                break;
+
+            case ButtonState.PLACE_BLOCK:
+                toggleBlocked(node);
+                break;
+
+            case ButtonState.PLACE_END:
+                setNewEnd(node);
+                break;
+
+            default:
+                break;
+        }
+
     });
 }
 
